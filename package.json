@@ -1,0 +1,33 @@
+{
+  "name": "live-session-toolkit",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev --name init",
+    "prisma:studio": "prisma studio"
+  },
+  "dependencies": {
+    "next": "14.2.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "express": "4.19.2",
+    "socket.io": "4.7.5",
+    "socket.io-client": "4.7.5",
+    "@prisma/client": "5.18.0",
+    "prisma": "5.18.0",
+    "qrcode": "1.5.3",
+    "recharts": "2.12.7",
+    "nanoid": "3.3.7",
+    "@google/genai": "latest",
+    "dotenv": "16.4.5"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.7",
+    "postcss": "8.4.40",
+    "autoprefixer": "10.4.19"
+  }
+}

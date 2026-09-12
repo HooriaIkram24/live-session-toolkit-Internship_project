@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+* {
+  box-sizing: border-box;
+}
+ 
+html, body, #__next {
+  height: 100%;
+  width: 100%;
+}
+ 
+/* ================= DARK NAVY "LIVELOGIC" THEME ================= */
+ 
+body {
+  background:
+    radial-gradient(1200px 600px at 15% -10%, rgba(37, 99, 235, 0.18), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(6, 182, 212, 0.12), transparent 55%),
+    linear-gradient(160deg, #060b1a 0%, #0a1330 35%, #0d1a3f 70%, #0a1330 100%);
+  background-attachment: fixed;
+  color: #e6edf7;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+ 
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #f2f6ff;
+}
+ 
+/* ================= FULL SCREEN UTILIZATION ================= */
+.max-w-sm { max-width: 30rem !important; }
+.max-w-md { max-width: 46rem !important; }
+.max-w-2xl { max-width: 76rem !important; }
+.max-w-4xl { max-width: 100rem !important; }
+ 
+@media (min-width: 1280px) {
+  .max-w-md { max-width: 52rem !important; }
+  .max-w-2xl { max-width: 88rem !important; }
+  .max-w-4xl { max-width: 110rem !important; }
+}
+ 
+.min-h-screen {
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+ 
+/* ================= CARDS (glassy navy panels) ================= */
+.bg-white {
+  background-image: linear-gradient(160deg, rgba(23, 37, 74, 0.92) 0%, rgba(11, 20, 46, 0.95) 100%) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(56, 132, 255, 0.22);
+}
+ 
+.shadow {
+  box-shadow:
+    0 0 0 1px rgba(56, 132, 255, 0.06),
+    0 12px 28px -6px rgba(0, 0, 0, 0.55),
+    0 0 40px -12px rgba(37, 99, 235, 0.35) !important;
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+ 
+.shadow:hover {
+  box-shadow:
+    0 0 0 1px rgba(56, 189, 248, 0.18),
+    0 20px 40px -8px rgba(0, 0, 0, 0.6),
+    0 0 55px -10px rgba(56, 189, 248, 0.45) !important;
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateY(-2px);
+}
+ 
+/* Nested/inner boxes (border-slate-200) inside cards */
+.border-slate-200 {
+  border-color: rgba(56, 132, 255, 0.18) !important;
+  background: rgba(6, 12, 30, 0.4);
+}
+ 
+/* ================= TEXT COLORS ================= */
+.text-slate-800, .text-slate-700 { color: #1697ed !important; }
+.text-slate-500 { color: #92a6d4 !important; }
+.text-slate-400 { color: #7286b3 !important; }
+.text-slate-300 { color: #5a6c94 !important; }
+ 
+.text-green-600 { color: #34d399 !important; }
+.text-red-500 { color: #f87171 !important; }
+ 
+/* ================= BUTTON THEME ================= */
+button {
+  cursor: pointer;
+  transition: transform 0.1s ease, filter 0.15s ease, box-shadow 0.15s ease;
+}
+button:active {
+  transform: scale(0.97);
+}
+ 
+.bg-indigo-600 {
+  background-image: linear-gradient(135deg, #38bdf8, #2563eb) !important;
+  box-shadow: 0 4px 18px -2px rgba(37, 99, 235, 0.55), 0 0 24px -6px rgba(56, 189, 248, 0.5);
+  color: #f8fbff !important;
+  border: none;
+}
+.bg-indigo-600:hover { filter: brightness(1.1); }
+ 
+.bg-purple-600 {
+  background-image: linear-gradient(135deg, #a78bfa, #6d28d9) !important;
+  box-shadow: 0 4px 18px -2px rgba(109, 40, 217, 0.5), 0 0 24px -6px rgba(167, 139, 250, 0.45);
+  color: #f8fbff !important;
+}
+.bg-purple-600:hover { filter: brightness(1.1); }
+ 
+.bg-teal-600 {
+  background-image: linear-gradient(135deg, #22d3ee, #0891b2) !important;
+  box-shadow: 0 4px 18px -2px rgba(8, 145, 178, 0.5), 0 0 24px -6px rgba(34, 211, 238, 0.45);
+  color: #f8fbff !important;
+}
+.bg-teal-600:hover { filter: brightness(1.1); }
+ 
+.bg-green-600 {
+  background-image: linear-gradient(135deg, #4ade80, #16a34a) !important;
+  box-shadow: 0 4px 18px -2px rgba(22, 163, 74, 0.5), 0 0 24px -6px rgba(74, 222, 128, 0.4);
+  color: #f8fbff !important;
+}
+.bg-green-600:hover { filter: brightness(1.1); }
+ 
+.bg-indigo-500 {
+  background-image: linear-gradient(90deg, #38bdf8, #2563eb) !important;
+}
+ 
+/* ================= LINKS AS BADGES (View History, View Results, etc.) ================= */
+a.text-indigo-600 {
+  display: inline-block;
+  background: rgba(56, 132, 255, 0.12);
+  color: #7dd3fc !important;
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none !important;
+  border: 1px solid rgba(56, 132, 255, 0.3);
+  transition: all 0.15s ease;
+}
+a.text-indigo-600:hover {
+  background: rgba(56, 132, 255, 0.22);
+  border-color: rgba(125, 211, 252, 0.5);
+  transform: translateY(-1px);
+  text-decoration: none !important;
+}
+ 
+/* ================= INPUTS (glowing focus like the reference UI) ================= */
+input {
+  background: rgba(5, 11, 28, 0.65) !important;
+  color: #eef3ff !important;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+input::placeholder {
+  color: #5a6c94;
+}
+ 
+.border-slate-300 {
+  border-color: rgba(56, 132, 255, 0.3) !important;
+}
+ 
+input:focus, button:focus {
+  outline: none;
+}
+ 
+.focus\:ring-indigo-400:focus,
+.focus\:ring-purple-400:focus,
+.focus\:ring-teal-400:focus {
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.35), 0 0 18px rgba(56, 189, 248, 0.4) !important;
+  border-color: #7dd3fc !important;
+  background: rgba(10, 20, 46, 0.85) !important;
+}
+ 
+/* ================= MISC POLISH ================= */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(6, 12, 30, 0.4);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(56, 132, 255, 0.4);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 189, 248, 0.6);
+}
+ 
+/* ================= START SESSION BOX: normal size, centered ================= */
+.session-create-box {
+  max-width: 28rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}

@@ -1,0 +1,86 @@
+// prisma/schema.prisma
+// This file defines your MySQL database structure.
+// Run `npm run prisma:migrate` after setting DATABASE_URL to create these tables.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Host {
+  id        String    @id @default(uuid())
+  name      String
+  email     String    @unique
+  createdAt DateTime  @default(now())
+  sessions  Session[]
+}
+
+model Session {
+  id           String        @id @default(uuid())
+  code         String        @unique // short join code, e.g. "AB12CD"
+  title        String
+  host         Host          @relation(fields: [hostId], references: [id])
+  hostId       String
+  createdAt    DateTime      @default(now())
+  polls        Poll[]
+  participants Participant[]
+  questions    Question[]
+}
+
+model Participant {
+  id         String     @id @default(uuid())
+  name       String?
+  email      String?
+  session    Session    @relation(fields: [sessionId], references: [id])
+  sessionId  String
+  joinedAt   DateTime   @default(now())
+  responses  Response[]
+  questions  Question[]
+}
+
+model Poll {
+  id        String     @id @default(uuid())
+  session   Session    @relation(fields: [sessionId], references: [id])
+  sessionId String
+  question  String
+  type      String     // "multiple_choice" | "raise_hand" | "quiz"
+  aiGenerated Boolean  @default(false)
+  createdAt DateTime   @default(now())
+  options   Option[]
+  responses Response[]
+}
+
+model Option {
+  id        String     @id @default(uuid())
+  poll      Poll       @relation(fields: [pollId], references: [id])
+  pollId    String
+  text      String
+  isCorrect Boolean    @default(false)
+  responses Response[]
+}
+
+model Response {
+  id            String      @id @default(uuid())
+  poll          Poll        @relation(fields: [pollId], references: [id])
+  pollId        String
+  option        Option      @relation(fields: [optionId], references: [id])
+  optionId      String
+  participant   Participant @relation(fields: [participantId], references: [id])
+  participantId String
+  submittedAt   DateTime    @default(now())
+}
+
+model Question {
+  id            String      @id @default(uuid())
+  session       Session     @relation(fields: [sessionId], references: [id])
+  sessionId     String
+  participant   Participant @relation(fields: [participantId], references: [id])
+  participantId String
+  text          String
+  answered      Boolean     @default(false)
+  createdAt     DateTime    @default(now())
+}
